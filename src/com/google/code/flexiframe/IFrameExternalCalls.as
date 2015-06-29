@@ -57,6 +57,7 @@ package com.google.code.flexiframe
                         "newDiv.style.backgroundColor = '#FFFFFF';" + 
                         "newDiv.style.border = '0px';" +
                         "newDiv.style.overflow = overflowAssignment;" +
+                        "newDiv.style.zIndex = '-1';" +
                         "newDiv.style.display = 'none';" +
                         "bodyID.appendChild(newDiv);" +
                     "}" +
