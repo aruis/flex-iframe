@@ -1,0 +1,19 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath group: 'org.gradlefx', name: 'gradlefx', version: '1.2.0'
+    }
+}
+
+
+apply plugin: 'gradlefx'
+flexHome = '/Users/liurui/develop/sdk/flex/4.14.1'
+srcDirs = ['src']
+
+
+type = 'swc'
+
+
