@@ -147,11 +147,7 @@ public class IFrame extends Container {
         this.addEventListener(Event.REMOVED_FROM_STAGE, handleRemove);
         this.addEventListener(Event.ADDED_TO_STAGE, handleAdd);
         this.addEventListener(MouseEvent.MOUSE_OVER, mouseOverHandler);
-
-        setStyle('backgroundColor', 'black');
-        setStyle('backgroundAlpha', '0');
     }
-
 
     // =========================================================================================
     // IFrame construction & management
@@ -428,6 +424,13 @@ public class IFrame extends Container {
 
         _frameAdded = true;
         updateFrameVisibility(true);
+
+        setStyle('backgroundColor', 'black');
+        setStyle('backgroundAlpha', '0');
+
+        if (parent is UIComponent) {
+            setBackgroundAlpha0(parent as UIComponent);
+        }
     }
 
     /**
@@ -1342,5 +1345,16 @@ public class IFrame extends Container {
                 " document.getElementById('" + _frameId + "').onmouseout = function () {    document.getElementById('" + _frameId + "').style.zIndex = -1;} " +
                 "}")
     }
+
+    private function setBackgroundAlpha0(ui:UIComponent):void {
+        if (ui == null) return;
+
+        ui.setStyle('backgroundAlpha', 0);
+
+        if (ui.hasOwnProperty('parent') && ui.parent is UIComponent) {
+            setBackgroundAlpha0(ui.parent as UIComponent);
+        }
+    }
+
 }
 }
